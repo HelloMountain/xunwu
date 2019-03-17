@@ -9,4 +9,6 @@ import org.springframework.stereotype.Service;
 public interface SupportAddressService {
 
     ServiceMultiResult<SupportAddressDTO> findAllCities();
+
+    ServiceMultiResult<SupportAddressDTO> findReginsByBelongTo(String cityEnName);
 }

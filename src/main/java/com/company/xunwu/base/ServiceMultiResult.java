@@ -1,43 +1,49 @@
 package com.company.xunwu.base;
 
 
-import java.io.Serializable;
 import java.util.List;
 
 /*
 * 通用多结果Service返回模式
 * */
-public class ServiceMultiResult<T> implements Serializable {
 
-    private int total;
-    private List<T> t;
 
-    public ServiceMultiResult(int total, List<T> t) {
+
+/**
+ * 通用多结果Service返回结构
+ * @author youyusong
+ * @date 2018/9/6
+ */
+public class ServiceMultiResult<T> {
+
+    private long total;
+    private List<T> result;
+
+    public ServiceMultiResult(long total, List<T> result) {
         this.total = total;
-        this.t = t;
+        this.result = result;
     }
 
-    public int getTotal() {
+    public long getTotal() {
         return total;
     }
 
-    public void setTotal(int total) {
+    public void setTotal(long total) {
         this.total = total;
     }
 
-    public List<T> getT() {
-        return t;
+    public List<T> getResult() {
+        return result;
     }
 
-    public void setT(List<T> t) {
-        this.t = t;
+    public void setResult(List<T> result) {
+        this.result = result;
     }
 
-    @Override
-    public String toString() {
-        return "ServiceMultiResult{" +
-                "total=" + total +
-                ", t=" + t +
-                '}';
+    public int getResultSize() {
+        if (this.result == null) {
+            return 0;
+        }
+        return this.result.size();
     }
 }

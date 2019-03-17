@@ -14,6 +14,7 @@ $(function () {
     // 二级联动 地区 以及 地铁线路 动态变动
     $city.change(function () {
         var selectedVal = $(this).val();
+
         if (typeof(selectedVal) == 'undefined' || selectedVal == "") {
             layer.msg('请选择所在城市！', {icon: 5, time: 2000});
             return;

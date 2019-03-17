@@ -19,7 +19,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 
 @Configuration
-//
+
 //@EnableAutoConfiguration(exclude = {
 //        org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration.class
 //})
@@ -37,11 +37,12 @@ public class SecutityConfig extends WebSecurityConfigurerAdapter {
         //配置资源访问权限
         http.authorizeRequests()
                 .antMatchers("/admin/login").permitAll()
+                .antMatchers("/**").permitAll()
                 .antMatchers("/static/**").permitAll()
                 .antMatchers("/user/login").permitAll()
-                .antMatchers("/admin/**").hasRole("ADMIN")
-                .antMatchers("/user/**").hasAnyRole("ADMIN", "USER")
-                .antMatchers("/api/user/**").hasAnyRole("ADMIN", "USER")
+//                .antMatchers("/admin/**").hasRole("ADMIN")
+//                .antMatchers("/user/**").hasAnyRole("ADMIN", "USER")
+//                .antMatchers("/api/user/**").hasAnyRole("ADMIN", "USER")
                 .and()
                 .formLogin()
                 .loginProcessingUrl("/login")

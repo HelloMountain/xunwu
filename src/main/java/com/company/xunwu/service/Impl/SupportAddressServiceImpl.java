@@ -34,4 +34,18 @@ public class SupportAddressServiceImpl implements SupportAddressService {
         }
         return new ServiceMultiResult<>(supportAddressDTOS.size(), supportAddressDTOS);
     }
+
+    @Override
+    public ServiceMultiResult<SupportAddressDTO> findReginsByBelongTo(String cityEnName) {
+        QueryWrapper<SupportAddress> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("belong_to", cityEnName);
+        List<SupportAddress> supportAddresses = supportAddressMapper.selectList(queryWrapper);
+        List<SupportAddressDTO> supportAddressDTOS = new ArrayList<>();
+
+        for (SupportAddress s:supportAddresses) {
+            supportAddressDTOS.add(modelMapper.map(s, SupportAddressDTO.class));
+        }
+
+        return new ServiceMultiResult<>(supportAddressDTOS.size(), supportAddressDTOS);
+    }
 }

@@ -164,6 +164,7 @@ $(function () {
     var $city = $("#city");
 
     // 城市绑定
+    alert("fdsf");
     $.get('/address/support/cities', function (data, status) {
         if (status !== 'success' || data.code !== 200) {
             alert("Error: " + data.message);
